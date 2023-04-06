@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './Card';
-import headlineCards from '../headlineData';
+import headlineCards from '../data/headlineData';
 
 const ImageCarousel = () => {
   return (

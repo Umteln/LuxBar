@@ -2,7 +2,7 @@ import React from 'react';
 
 const Card = ({ headline }) => {
   return (
-    <div className='rounded-xl relative'>
+    <div className='rounded-xl relative hover:scale-105'>
       {/*overlay */}
       <div className='absolute w-full h-full bg-black/50 rounded-xl text-white'>
         <p className='font-bold text-2xl px-2 pt-4'>Spice up your Summer</p>
