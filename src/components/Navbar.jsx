@@ -11,10 +11,12 @@ import {
 import { BsFillCartFill } from 'react-icons/bs';
 const Navbar = () => {
   const [navToggle, setNavToggle] = useState(false);
+  const [query, setQuery] = useState('');
 
   const handleNav = () => {
     setNavToggle((prev) => !prev);
   };
+  console.log(letter);
 
   return (
     <div className='max-w-[1640px] mx-auto flex justify-between items-center p-4'>
@@ -32,11 +34,13 @@ const Navbar = () => {
       </div>
       {/*search*/}
       <div className='bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]'>
-        <AiOutlineSearch sixe={25} />
+        <AiOutlineSearch size={25} />
         <input
           type='text'
+          value={letter}
           placeholder='Search drinks'
           className='bg-transparent  p-2 w-full focus:outline-none '
+          onChange={(e) => setQuery(e.target.value)}
         />
       </div>
       {/* cart button */}

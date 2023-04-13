@@ -1,21 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import MenuItem from './MenuItem';
+import useCocktailContext from '../context';
 
 const MenuGrid = ({ data }) => {
-  const [drinkDetails, setDrinkDetails] = useState();
-  const [drinkId, setDrinkId] = useState();
-
-  const getDrinkDeets = (id) => {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
-      .then((resp) => resp.json())
-      .then((apiData) => {
-        setDrinkDetails(apiData);
-      });
-  };
-
-  useEffect(() => {
-    getDrinkDeets(drinkId);
-  }, []);
+  const { drinkDetails, setDrinkDetails, drinkId, setDrinkId } =
+    useCocktailContext;
 
   return (
     <div className='max-w-[1640px] m-auto px-4 py-12'>
