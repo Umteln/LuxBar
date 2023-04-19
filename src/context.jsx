@@ -3,7 +3,7 @@ import { useState, createContext, useContext } from 'react';
 const CocktailContext = createContext();
 
 export const CocktailProvider = ({ children }) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState();
   const [drinkDetails, setDrinkDetails] = useState();
   const [drinkId, setDrinkId] = useState();
 

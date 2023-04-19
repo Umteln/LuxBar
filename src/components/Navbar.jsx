@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   AiOutlineMenu,
-  AiOutlineSearch,
+
   AiOutlineClose,
   AiOutlineTag,
   AiOutlineShareAlt,
@@ -9,14 +9,14 @@ import {
   AiOutlineLogin,
 } from 'react-icons/ai';
 import { BsFillCartFill } from 'react-icons/bs';
+import useCocktailContext from '../context';
+
 const Navbar = () => {
   const [navToggle, setNavToggle] = useState(false);
-  const [query, setQuery] = useState('');
 
   const handleNav = () => {
     setNavToggle((prev) => !prev);
   };
-  console.log(letter);
 
   return (
     <div className='max-w-[1640px] mx-auto flex justify-between items-center p-4'>
@@ -32,17 +32,7 @@ const Navbar = () => {
           Lux<span className='font-bold'> Bar</span>
         </h1>
       </div>
-      {/*search*/}
-      <div className='bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]'>
-        <AiOutlineSearch size={25} />
-        <input
-          type='text'
-          value={letter}
-          placeholder='Search drinks'
-          className='bg-transparent  p-2 w-full focus:outline-none '
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      </div>
+
       {/* cart button */}
       <button className='bg-black text-white hidden md:flex items-center py-2 hover:bg-white hover:text-black'>
         <BsFillCartFill

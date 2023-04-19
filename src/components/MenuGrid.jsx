@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import MenuItem from './MenuItem';
 import useCocktailContext from '../context';
+import SearchBar from './SearchBar';
 
-const MenuGrid = ({ data }) => {
+const MenuGrid = ({ data, setQuery, query, search }) => {
   const { drinkDetails, setDrinkDetails, drinkId, setDrinkId } =
     useCocktailContext;
 
@@ -11,33 +12,20 @@ const MenuGrid = ({ data }) => {
       <h1 className='text-gray-600 font-bold text-4xl text-center'>
         Top Rated Cocktails
       </h1>
-      {/*filter row */}
-      <div className='flex flex-col lg:flex-row justify-between'>
-        {/*filter type */}
-        <div>
-          <p className='text-gray-700 font-bold'>Filter By Type</p>
-          <div className='flex justify-between flex-wrap'>
-            <button className='m-1 border-purple-600 text-purple-900 hover:bg-purple-600 hover:text-white '>
-              All
-            </button>
-            <button className='m-1 border-purple-600 text-purple-900 hover:bg-purple-600 hover:text-white '>
-              All
-            </button>
-            <button className='m-1 border-purple-600 text-purple-900 hover:bg-purple-600 hover:text-white '>
-              All
-            </button>
-            <button className='m-1 border-purple-600 text-purple-900 hover:bg-purple-600 hover:text-white '>
-              All
-            </button>
-            <button className='m-1 border-purple-600 text-purple-900 hover:bg-purple-600 hover:text-white '>
-              All
-            </button>
-          </div>
-        </div>
+      {/* search*/}
+      <div className='bg-gray-200 rounded-full flex justify-between items-center px-2 w-[200px] sm:w-[200px] lg:w-[500px]'>
+        <input
+          type='search'
+          name='search-form'
+          id='search-form'
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder='Search drinks'
+          className='bg-transparent  p-2 w-full focus:outline-none '
+        />
       </div>
       {/* menu items */}
       <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
-        {data.map((item) => (
+        {search(data).map((item) => (
           <MenuItem
             key={item.idDrink}
             item={item}
